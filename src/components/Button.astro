@@ -1,0 +1,135 @@
+---
+interface Props {
+	href: string;
+	variant?: 'default' | 'discord' | 'docs' | 'purchase';
+}
+
+const { href, variant = 'default' } = Astro.props;
+---
+
+<a
+	class:list={['minecraft-button', variant !== 'default' && `minecraft-button--${variant}`]}
+	href={href}
+	target="_blank"
+	rel="noopener noreferrer"
+>
+	<slot />
+</a>
+
+<style>
+	.minecraft-button {
+		display: inline-flex;
+		box-sizing: border-box;
+		align-items: center;
+		justify-content: center;
+		width: 7rem;
+		min-width: 7rem;
+		height: 3rem;
+		padding: 0.75rem 0.55rem;
+		white-space: nowrap;
+		border: 2px solid #8fe7c2;
+		border-radius: 0.2rem;
+		background: #176b54;
+		box-shadow:
+			inset 0 2px 0 rgba(241, 255, 244, 0.22),
+			0 4px 0 #063a36,
+			0 0.75rem 1.5rem rgba(0, 0, 0, 0.25);
+		color: #f1fff4;
+		font-family: 'Press Start 2P', 'Courier New', monospace;
+		font-size: clamp(0.55rem, 0.8vw, 0.65rem);
+		line-height: 1.4;
+		text-decoration: none;
+		text-shadow: 0 0.12em 0 #063a36;
+		transition:
+			background-color 160ms ease,
+			box-shadow 160ms ease,
+			transform 160ms ease;
+	}
+
+	.minecraft-button:hover {
+		background: #218565;
+	}
+
+	.minecraft-button:active {
+		box-shadow:
+			inset 0 2px 0 rgba(0, 0, 0, 0.16),
+			0 1px 0 #063a36;
+		transform: translateY(3px);
+	}
+
+	.minecraft-button--discord {
+		border-color: #8994ff;
+		background: #5865f2;
+		box-shadow:
+			inset 0 2px 0 rgba(255, 255, 255, 0.2),
+			0 4px 0 #3642a8,
+			0 0.75rem 1.5rem rgba(0, 0, 0, 0.25);
+		text-shadow: 0 0.12em 0 #3642a8;
+	}
+
+	.minecraft-button--discord:hover {
+		background: #6875f5;
+	}
+
+	.minecraft-button--discord:active {
+		box-shadow:
+			inset 0 2px 0 rgba(0, 0, 0, 0.16),
+			0 1px 0 #3642a8;
+	}
+
+	.minecraft-button--docs {
+		border-color: #8290e8;
+		background: #4658b8;
+		box-shadow:
+			inset 0 2px 0 rgba(255, 255, 255, 0.18),
+			0 4px 0 #2d397d,
+			0 0.75rem 1.5rem rgba(0, 0, 0, 0.25);
+		text-shadow: 0 0.12em 0 #2d397d;
+	}
+
+	.minecraft-button--docs:hover {
+		background: #5669ca;
+	}
+
+	.minecraft-button--docs:active {
+		box-shadow:
+			inset 0 2px 0 rgba(0, 0, 0, 0.16),
+			0 1px 0 #2d397d;
+	}
+
+	.minecraft-button--purchase {
+		border-color: #ffe38a;
+		background: #d6a51c;
+		box-shadow:
+			inset 0 2px 0 rgba(255, 255, 255, 0.28),
+			0 4px 0 #8a6810,
+			0 0.75rem 1.5rem rgba(0, 0, 0, 0.25);
+		color: #241a00;
+		text-shadow: 0 0.12em 0 rgba(255, 244, 188, 0.5);
+	}
+
+	.minecraft-button--purchase:hover {
+		background: #e4b72d;
+	}
+
+	.minecraft-button--purchase:active {
+		box-shadow:
+			inset 0 2px 0 rgba(0, 0, 0, 0.16),
+			0 1px 0 #8a6810;
+	}
+
+	.minecraft-button:focus-visible {
+		outline: 2px solid #f1fff4;
+		outline-offset: 4px;
+	}
+
+	@media (max-width: 36rem) {
+		.minecraft-button {
+			width: 6.5rem;
+			min-width: 6.5rem;
+			height: 2.5rem;
+			padding: 0.65rem 0.45rem;
+			font-size: 0.55rem;
+		}
+	}
+</style>
